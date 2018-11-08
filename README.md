@@ -1,5 +1,5 @@
 # TP_2_Scheduling_SUD
-A scheduling system for employees and service workes
+A scheduling system for employees and service workers
 
 
 An organization has various locations
