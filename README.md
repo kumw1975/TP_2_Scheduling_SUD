@@ -1,6 +1,23 @@
 # TP_2_Scheduling_SUD
 A scheduling system for employees and service workers
 
+Tools in consideration <b> |java | Eclipse EE | Hibernate | Spring MVC | Amazon AWS | JPA | Maven | Angular Js | Amazon RDS | Git/Egit |  MY SQL | Violet UML | Junit | StdLib </b>
+
+Goals: Artifacts. requirements / requirement analysis, GRASP princibples (business logic, presentation logic separation) software sequesnce diagram | CRC cards | Conceptual Class Diagrams | UML | refactoring
+
+<ul>
+<li>Exploring Inheritance </li>
+<li>Requirements and Use Case Modeling</li>
+<li>Test-Driven Development </li>
+<li>Best Practices in Java Objects and Classes</li>
+<li>Domain Modeling</li>
+<li>Analysis to Design</li>
+<li>UML Interaction Diagrams</li>
+<li>System Sequence Diagram </li>
+<li>Responsibility Assignment and GRASP GRASP & Design Patterns(&CRC cards)</li>
+<li>UML Class Diagrams & Design to Code</li>
+<li>Testing and Refactoring*
+</ul>
 
 An organization has various locations
 At the top level of the organization is an admin who has read and write access to all applications in all locations(Root user)
@@ -26,3 +43,15 @@ in the event that an employee ask for their shift to be covered,
 	they come in they are automagically sent to all employees ( or only to employees in that role. )
 
 Employees can cover shifts in any location provided they do not cross their 40 hr limit
+
+
+Challenges:
+Testing db MVC
+
+
+
+
+
+
+
+
