@@ -3,7 +3,7 @@ A scheduling system for employees and service workers
 
 Tools in consideration <br><b> | java | Eclipse EE | Hibernate | Spring MVC | Amazon AWS | JPA | Maven | Angular Js | Amazon RDS | Git/Egit |  MY SQL | Violet UML | Junit | StdLib </b>
 
-Goals: Artifacts. requirements / requirement analysis, GRASP princibples (business logic, presentation logic separation) software sequesnce diagram | CRC cards | Conceptual Class Diagrams | UML | refactoring
+<i>Goals: Artifacts. requirements / requirement analysis, GRASP princibples (business logic, presentation logic separation) software sequesnce diagram | CRC cards | Conceptual Class Diagrams | UML | refactoring </i>
 
 <ul>
 <li>Exploring Inheritance </li>
