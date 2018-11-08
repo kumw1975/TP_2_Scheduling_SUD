@@ -45,6 +45,9 @@ in the event that an employee ask for their shift to be covered,
 
 Employees can cover shifts in any location provided they do not cross their 40 hr limit
 
+Some locations are service oriented locations. At these locations clients can set up appointments with service workers (employees)
+Appointments can only be scheduled during a service workers working hours (shift) depending on the availability of the service worker.
+No two appointments can be scheduled for the same time. 
 
 Challenges:
 Testing db MVC
