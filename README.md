@@ -19,6 +19,7 @@ Tools in consideration <br><b> Java | Eclipse EE | Hibernate | Spring MVC | Amaz
 <li>Testing and Refactoring*
 </ul>
 
+<h1> Overview </h1>
 An organization has various locations
 At the top level of the organization is an admin who has read and write access to all applications in all locations(Root user)
 Each location has a manager (admin) who is also given read and write permissions only for his location
