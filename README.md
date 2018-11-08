@@ -24,3 +24,5 @@ in the event that an employee ask for their shift to be covered,
 	the manager approves responses to requests. 
 	The manager can choose to automate responses to requests. so that when
 	they come in they are automagically sent to all employees ( or only to employees in that role. )
+
+Employees can cover shifts in any location provided they do not cross their 40 hr limit
