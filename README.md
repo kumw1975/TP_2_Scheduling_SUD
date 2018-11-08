@@ -1,7 +1,8 @@
 # TP_2_Scheduling_SUD
 A scheduling system for employees and service workers
 
-Tools in consideration <br><b> Java | Eclipse EE | Hibernate | Spring MVC | Amazon AWS | JPA | Maven | Angular Js | Amazon RDS | Git/Egit |  MY SQL | Violet UML | Junit | StdLib | AWS VPC | AWS Subnet | AWS EBS </b>
+Tools in consideration <br><b> Java | Eclipse EE | Hibernate | Spring MVC | Amazon AWS | JPA | Maven | Angular Js | Amazon RDS | Git/Egit |  MY SQL | Violet UML | Junit | StdLib | AWS VPC | AWS Subnet | AWS EBS vagrant docker 
+ansible jason yaml pom</b>
 
 <i>Goals: Artifacts. requirements / requirement analysis, GRASP princibples (business logic, presentation logic separation) software sequesnce diagram | CRC cards | Conceptual Class Diagrams | UML | refactoring </i>
 
