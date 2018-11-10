@@ -53,6 +53,11 @@ Challenges:
 Testing db MVC
 
 
+Loc -> Org -> Loc -> Employee -> schedule - > shift
+Employee -> Salaried - > Hourly
+Location -> H.Emps -> Service workers
+
+
 
 
 
