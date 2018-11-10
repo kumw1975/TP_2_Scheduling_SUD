@@ -59,23 +59,26 @@ Location -> H.Emps -> Service workers
 
 
 
-<ul>
-<li>Exploring Inheritance </li>
-<li>Requirements and Use Case Modeling</li>
-<li>Test-Driven Development </li>
-<li>Best Practices in Java Objects and Classes</li>
-<li>Domain Modeling</li>
-<li>Analysis to Design</li>
-<li>UML Interaction Diagrams</li>
-<li>System Sequence Diagram </li>
-<li>Responsibility Assignment and GRASP GRASP & Design Patterns(&CRC cards)</li>
-<li>UML Class Diagrams & Design to Code</li>
-<li>Testing and Refactoring*
-</ul>
+
 
 brima1c
 ---------------
 <ul>
-<li>Analysis to Design</li>
 <li>UML Interaction Diagrams</li>
+<li>System Sequence Diagram </li>
 </ul>
+
+Saad-999
+---------------
+<ul>
+<li>Requirements and Use Case Modeling</li>
+<li>Responsibility Assignment and GRASP GRASP & Design Patterns(&CRC cards) /x</li>
+</ul>
+
+ Sharifah11
+---------------
+<ul>
+<li>Domain Modeling</li>
+<li>Analysis to Design</li>
+</ul>
+ 
