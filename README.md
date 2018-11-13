@@ -49,6 +49,11 @@ Some locations are service oriented locations. At these locations clients can se
 Appointments can only be scheduled during a service workers working hours (shift) depending on the availability of the service worker.
 No two appointments can be scheduled for the same time. 
 
+*Default Employees*: can only be scheduled to work at their Home locations (but can take shifts at other locations and their shifts can be covered by other default employees in the same role. (cashiers)
+*Dynamic employees*: can be scheduled at any location (pharmacists)
+*Static Employees*: can only be scheduled to their home location (appointment must be made to see these employees) (Doctors, barbers, professors office hours by appointment only, their shifts can not be covered by other employees)
+
+
 Challenges:
 Testing db MVC
 
