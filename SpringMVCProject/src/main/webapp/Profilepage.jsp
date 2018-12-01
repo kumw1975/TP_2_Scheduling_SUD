@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
 <%@page import="com.MVC.Controllers.DB_coonectionController"%>
+<%@page import="com.MVC.Controllers.ShiftController"%>
 <%@ page import="java.util.List" %>
 <%@ page isELIgnored="false" %>
 
@@ -8,12 +9,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <style>
 
@@ -165,53 +171,111 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
   color: #000 !important;
 }
+
+.table-curved {
+   border-collapse: separate;
+   border: solid #ddd 1px;
+   border-radius: 6px;
+   border-left: 0px;
+   border-top: 0px;
+}
+.table-curved > thead:first-child > tr:first-child > th {
+    border-bottom: 0px;
+    border-top: solid #ddd 1px;
+}
+.table-curved td, .table-curved th {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+.table-curved > :first-child > :first-child > :first-child {
+    border-top-left-radius: 6px;
+}
+.table-curved > :first-child > :first-child > :last-child {
+    border-top-right-radius: 6px;
+}
+.table-curved > :last-child > :last-child > :first-child {
+    border-bottom-left-radius: 6px;
+}
+.table-curved > :last-child > :last-child > :last-child {
+    border-bottom-right-radius: 6px;
+}
+
+#myInput {
+  
+  margin-bottom: 12px;
+  margin-right: 40;
+  
+}
+.navbar {
+    width:100%;  
+    border-radius:0;
+    margin-bottom:0;
+}
+.bg-1 { 
+      background-color: #1abc9c;
+      color: #ffffff;
+  }
+#myTab{
+margin-top:0px;
+margin-left:0px;
+
+
+}
+#customers tr:nth-child(even){
+background-color: #f2f2f2;
+}
+
 </style>
 </head>
 
 <body>
-
-<hr>
-<div class="container bootstrap snippet" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">"
-
-    <div class="row">
-  		<div class="col-sm-10"></div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Scheduler</a>
     </div>
-    <div class="row">
-  		<div class="col-sm-5"><!--left col-->
-              
-   <div class="profile-block">
-  <div class="panel text-center">
-    <div class="user-heading"> <a href="#"><img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" alt="" title=""></a>
-      <h1>${user}</h1>
-      <p>${role}</p>
-    </div>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
-      <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i>Edit profile</a></li>
-      <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i>Subscription History</a></li>
-      <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i>Transaction History</a></li>
-      <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Profile</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
-</div>
-          
-        </div><!--/col-3-->
+  
+  
+</nav>
+
+
+<header class="jumbotron" style="margin-bottom:12px; margin-top:12px; margin-left:80px; margin-right:80px;">
+<h1 class="display-3" style="text-align: center;">Welcome ${user}! </h1>
+        <p class="lead" style="text-align: center;">This is a prototype</p>
         
         
-    	<div class="col-sm-6">
+</header>
+<div class="container bootstrap snippet" style="margin-left:80px; padding:0; ">
+
+   
+        
+    	<div class="col-sm-5" style="padding-left:0;">
           
           <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#home" data-toggle="tab">My-Schedule</a></li>
-            <li><a href="#messages" data-toggle="tab">Messages</a></li>
-            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            <li class="active"><a href="#home" data-toggle="tab" style="color:white; background-color: #4CAF50">My-Schedule</a></li>
+            <li><a href="#schedule" data-toggle="tab" style="color:white; background-color: #4CAF50">General-Schedule</a></li>
+            <li><a href="#settings" data-toggle="tab" style="color:white; background-color: #4CAF50">Settings</a></li>
           </ul>
               
           <div class="tab-content">
             <div class="tab-pane active" id="home">
               <div class="table-responsive">
-                <table class="table table-hover table table-bordered">
+                <table class="table table-hover table table-bordered table-bordered table table-curved" id="customers">
+
                   <thead>
                     <tr>
+                      
                       
                       <th>Date</th>
                       <th>Start-Time</th>
@@ -226,11 +290,54 @@ h1, h2, h3, h4, h5, h6 {
           		String user_nm=request.getParameter("username");//get username from loginPage.jsp
           		
           		String q = "SELECT * FROM Schedule WHERE EMPLOYEE_NAME"+"="+"'"+user_nm+"'";
-          		System.out.println("Q********uery :" + q);
+          		String q2 = "SELECT * FROM Schedule";
+          		
           		List<Object[]> employees = db.session.createSQLQuery(q).list();
-
+          		List<Object[]> employees2 = db.session.createSQLQuery(q2).list();
           	    %>
           	    	<% for(Object[] result: employees) {%>
+          	    	 
+          	        
+          	    		
+          	    		<tbody id="items">
+                        <tr>                          
+                          <td><%=(String) result[1]%></td>
+                          <td><%=(String) result[6]%></td>
+                          <td><%=(String) result[4]%></td>
+                          <td><%=(String) result[5]%></td>
+                        </tr>
+                        
+          	    		<tbody>
+          	    			
+          	    	<% } %>
+                  
+                </table>
+              </div><!--/table-resp-->
+              
+            
+              
+             </div><!--/tab-pane-home-->
+             <div class="tab-pane" id="schedule">
+               
+               <h2></h2>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                  <div class="table-responsive">
+                <table class="table table-hover table table-bordered table table-curved">
+                  <thead>
+                    <tr>
+                      
+                      
+                      <th>Employee</th>
+                      <th>Date</th>
+                      <th>Start-Time</th>
+                      <th>End-Time</th>
+                      <th>Location</th>
+                      
+                      
+                    </tr>
+                  </thead>
+                  
+          	    	<% for(Object[] results: employees2) {%>
           	    	 
           	        
           	    		
@@ -238,10 +345,12 @@ h1, h2, h3, h4, h5, h6 {
                         <tr>
                           
                           
-                          <td><%=(String) result[1]%></td>
-                          <td><%=(String) result[6]%></td>
-                          <td><%=(String) result[4]%></td>
-                          <td><%=(String) result[5]%></td>
+                          <td><%=(String) results[3]%></td>
+                          <td><%=(String) results[1]%></td>
+                          <td><%=(String) results[6]%></td>
+                          <td><%=(String) results[4]%></td>
+                          <td><%=(String) results[5]%></td>
+                          
 
                         </tr>
                         
@@ -252,27 +361,16 @@ h1, h2, h3, h4, h5, h6 {
                   
                   
                 </table>
-                <hr>
-                <div class="row">
-                  <div class="col-md-4 col-md-offset-4 text-center">
-                  	<ul class="pagination" id="myPager"></ul>
-                  </div>
-                </div>
+                
+                
               </div><!--/table-resp-->
-              
-              <hr>
-              
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
-               
-               <h2></h2>
-               
-               
-               
-             </div><!--/tab-pane-->
+
+             </div><!--/tab-pane-schedule-->
+             
+             
              <div class="tab-pane" id="settings">
             		
-                  <hr>
+                  
                   <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
                           
@@ -344,7 +442,23 @@ h1, h2, h3, h4, h5, h6 {
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
-    </div><!--/row-->
+    
+    <script>
+$(document).ready(function(){
+    $(".myTab a").click(function(){
+        $(this).tab('show');
+    });
+});
+
+$(document).ready(function(){
+	  $("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#schedule tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	});
+</script>
                                                       
 </body>
 </html>
