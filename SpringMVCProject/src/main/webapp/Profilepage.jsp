@@ -251,7 +251,7 @@ background-color: #f2f2f2;
 
 
 <header class="jumbotron" style="margin-bottom:12px; margin-top:12px; margin-left:80px; margin-right:80px;">
-<h1 class="display-3" style="text-align: center;">Welcome ${user}! </h1>
+<h1 class="display-3" style="text-align:center; font-weight:100;">Welcome ${user}! </h1>
         <p class="lead" style="text-align: center;">This is a prototype</p>
         
         
