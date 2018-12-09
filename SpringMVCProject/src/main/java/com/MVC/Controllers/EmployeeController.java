@@ -56,9 +56,7 @@ public class EmployeeController {
  	   this.employee_id= employee_ID;
  	   this.password=password;
 		 	   
-   }
-    
-    
+   }    
     
 	@RequestMapping("/employeeHandler")
 	public ModelAndView doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception 
