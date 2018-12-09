@@ -35,7 +35,7 @@ public class LoginController{
 		 try {
 			this.sc=  new SecurityController();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 	 }
@@ -57,7 +57,8 @@ public class LoginController{
 	public ModelAndView doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
 		  this.username = request.getParameter("username");
-		  this.password = sc.encrypt((request.getParameter("password")));
+		  this.username = this.username.trim();
+		  this.password = sc.encrypt((request.getParameter("password").trim()));
 		  
 		  validate_user(this.username,this.password);
 		  

@@ -235,18 +235,16 @@ background-color: #f2f2f2;
       <a class="navbar-brand" href="#">Scheduler</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Profile</a></li>
+      <li class="active"><a href="profile">Profile</a></li>
       <li><a href="#">Page 1</a></li>
       <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="signUp"><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
-  </div>
-  
-  
+  </div>  
 </nav>
 
 
