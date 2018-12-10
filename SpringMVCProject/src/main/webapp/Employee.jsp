@@ -10,21 +10,50 @@
 <body>
 <style>
 body{margin:0px;}
+.menu{
+width:100%; 
+background-color:red; 
+height:70px
+;margin:0;
+border:0;
+position: fixed;
+top: 0;
+overflow:hidden;
+}
+.menu_left{
+float:left;
+}
+.menu_right{
+float:right;
+}
+.menu_ul{
+list-style:none;
+}
+.menu_li{
+float:left;
+margin-right:20px;
+}
 </style>
-	<div style="width:100%; background-color:red; height:70px;margin:0;border:0;position: fixed;
-	  top: 0;overflow:hidden;">
-		<div style="float:left;">
-	    <ul style="list-style:none;">
-	      <li style="float:left;margin-right:20px;"><a href="profile">Profile</a></li>
-	      <li style="float:left;margin-right:20px;"><a href="#">Page 1</a></li>
-	      <li style="float:left;margin-right:20px;"><a href="#">Page 2</a></li>
+	<div class="menu">
+	   	<!-- if the user is logged in, show a different menu here.   -->
+	   	<!-- Dont show unlogged in users a profile and dashboard page.   -->
+	  
+		<div class="menu_left">
+	    <ul class="menu_ul">
+	      <li class="menu_li"><a href="profile">Profile</a></li>
+	      <li class="menu_li"><a href="#">Dashboard</a></li>
+	      <li class="menu_li"><a href="#">Favorites</a></li>
 	    </ul>
 		</div>
-		<div style="float:right;">
-	    <ul style="list-style:none;">
-	      <li style="float:left;margin-right:20px;"><a href="signUp">SignUp</a></li>
-	      <li style="float:left;margin-right:20px;"><a href="login">Login </a></li>
-	      <li style="float:left;margin-right:20px;"><a href="logout">Logout</a></li>
+		
+		<!-- if the user is logged in, show a different menu here.   -->
+	   	<!-- Dont show logged in user option to signup or login      -->
+		
+		<div class="menu_right">
+	    <ul class="menu_ul">
+	      <li class="menu_li"><a href="signUp">SignUp</a></li>
+	      <li class="menu_li"><a href="login">Login </a></li>
+	      <li class="menu_li"><a href="logout">Logout</a></li>
 	    </ul>	
 		</div>
 	</div>
