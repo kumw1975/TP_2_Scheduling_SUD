@@ -13,6 +13,7 @@
 <title>Insert title here</title>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -20,6 +21,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript">
+<script src="js/main.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
 <style>
 
@@ -225,6 +229,12 @@ margin-left:0px;
 background-color: #f2f2f2;
 }
 
+.buton{
+  background-color: #4CAF50;
+  color: white;
+  width:100%;
+}
+
 </style>
 </head>
 
@@ -271,7 +281,7 @@ background-color: #f2f2f2;
           <div class="tab-content">
             <div class="tab-pane active" id="home">
               <div class="table-responsive">
-                <table class="table table-hover table table-bordered table-bordered table table-curved" id="customers">
+                <table class="table table-hover table table-bordered table-bordered table table-curved" id="mySchedule">
 
                   <thead>
                     <tr>
@@ -281,6 +291,8 @@ background-color: #f2f2f2;
                       <th>Start-Time</th>
                       <th>End-Time</th>
                       <th>location</th>
+                      
+                      
                       
                     </tr>
                   </thead>
@@ -310,6 +322,8 @@ background-color: #f2f2f2;
           	    		<tbody>
           	    			
           	    	<% } %>
+          	    	
+          	    	
                   
                 </table>
               </div><!--/table-resp-->
@@ -345,7 +359,7 @@ background-color: #f2f2f2;
                         <tr>
                           
                           
-                          <td><%=(String) results[3]%></td>
+                          <td><%=(String) results[3]%> </td>
                           <td><%=(String) results[1]%></td>
                           <td><%=(String) results[6]%></td>
                           <td><%=(String) results[4]%></td>
@@ -442,6 +456,8 @@ background-color: #f2f2f2;
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
+        <button onclick="confirmShiftswap()"> Reset</button>
+</body>
     
     <script>
 $(document).ready(function(){
@@ -458,7 +474,53 @@ $(document).ready(function(){
 	    });
 	  });
 	});
+	
+
+//this function selects cells in the  My-Scheduletable
+var date;
+var start_time;
+var user= '<%=user_nm%>';
+$("#mySchedule tr").click(function(){
+	   $(this).addClass('selected').siblings().removeClass('selected');    
+	   date=$(this).find('td:first').html();
+	   start_time=$(this).find('td:nth-child(2)').html();
+	   
+	   confirmShiftswap();
+	});
+
+	$('.ok').on('click', function(e){
+	    alert($("#mySchedule tr.selected td:first").html());
+	});
+	
+	
+ //This function prompts a dialog box to confirm shift swaping swaping shift
+ function confirmShiftswap(){
+ $.confirm({
+    title: 'Send swap shift request',
+    content: 'Simple confirm!',
+    draggable: true,
+    buttons: {
+        confirm: function () {
+            $.alert('Confirmed!');
+            $.ajax({
+    	        url: '/SpringMVCProject1/SwapHandler',
+    	        data: {
+    	            date: date,
+    	            start_time: start_time,
+    	            user:user
+    	        },
+    	        type: 'POST'
+    	        
+    	    });
+            
+        },
+        cancel: function () {
+            $.alert('Canceled!');
+        }
+       
+    }
+});
+}
 </script>
                                                       
-</body>
 </html>

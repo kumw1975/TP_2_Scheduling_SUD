@@ -18,6 +18,8 @@
         <mapping class="com.MVC.Model.Employee"/>
         <mapping class="com.MVC.Model.Shift"/>
         <mapping class="com.MVC.Model.Schedule"/>
+        <mapping class="com.MVC.Model.SwapShiftRequests"/>
+        
         
         
     </session-factory>
