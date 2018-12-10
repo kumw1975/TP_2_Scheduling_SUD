@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*" %>
+<%@page import="com.MVC.Controllers.DB_coonectionController"%>
+<%@page import="com.MVC.Controllers.ShiftController"%>
+<%@ page import="java.util.List" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -9,7 +15,6 @@
 body{margin:0px;}
 </style>
 <body>
-
 	<div style="width:100%; background-color:red; height:70px;margin:0;border:0;position: fixed;
 	  top: 0;overflow:hidden;">
 		<div style="float:left;">
@@ -28,31 +33,16 @@ body{margin:0px;}
 		</div>
 	</div>
 
-
 	<div style="margin-top:140px; width:100%;">		
 		<div style="width:300px;margin:0 auto;display:flex; align-items:center; justify-content:center;">
-			<h2>LOGIN HERE</h2>
+			<h2 style="text-align:center;">${main_message}!</h2>
 		</div>
 		<div style="width:300px;margin:0 auto;display:flex; align-items:center; justify-content:center;">
-		    <form action="loginHandler" method="post">
-				<div style="width:300px;display:flex; align-items:center; justify-content:center;">
-					<input type="text" placeholder="name"/>
-				</div>		    	
-				<div style="margin-top:5px; width:300px;display:flex; align-items:center; justify-content:center;">
-					<input type="password" placeholder="password"/>
-				</div>		    	
-				<div style="margin-top:20px;width:300px;display:flex; align-items:center; justify-content:center;">
-					<button  type="submit">login</button>
-				</div>
-				<div style="width:300px;display:flex; align-items:center; justify-content:center;">
-					<p style="font-size:12px;">Not registered? <a href="signUp">Create an account</a></p>
-				</div>
-		    </form>
-		</div>
+			<p style="font-size:12px;text-align:center;">${sub_message}!</p>
+ 		</div>
 	</div>
 </body>
 </html>
- 
 
 
 

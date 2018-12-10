@@ -14,8 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.MVC.Model.Employee;
 
-
-
 @Controller
 public class LoginController{
 	
@@ -35,11 +33,10 @@ public class LoginController{
 		 try {
 			this.sc=  new SecurityController();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
-	 }
-	 
+	}	 
 	 
 	public LoginController(String username, String password) {
 		super();
@@ -47,90 +44,59 @@ public class LoginController{
 		this.password = password;
 		
 	}
-	
-	
-
-
-
 
 	@RequestMapping("/loginHandler")
 	public ModelAndView doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
 		  this.username = request.getParameter("username");
-		  this.password = sc.encrypt((request.getParameter("password")));
+		  this.username = this.username.trim();
+		  this.password = sc.encrypt((request.getParameter("password").trim()));
 		  
 		  validate_user(this.username,this.password);
 		  
 		 return this.mv;
 		
-	}//contorller
-	
-	
-	
-	
-	
+	}//contorller	
+		
 	public void validate_user(String username, String password) {
 		
 		String db_username="";
 		String db_password="";
 		String loadPage="";
 		 
-		this.db = new DB_coonectionController();
-		
-		
+		this.db = new DB_coonectionController();		
 		
 		String q = "SELECT * FROM Employee WHERE FIRSTNAME"+"="+"'"+username+"'";
 		System.out.println("Q********uery :" + q);
 		List<Object[]> employees = db.session.createSQLQuery(q).list();
-
 	    
-	    	for(Object[] result: employees) {
-	    	 
-	        
-	    		db_username=(String) result[4];
-	    		db_password=(String) result[6];
-	    	    this.mv.addObject("role",(String) result[8]);
-	    	}
-	    	
-	    	   
-	    	if((username.equals(db_username))&&(password.equals(db_password)))
-	    	{
-	    			
-	    		System.out.println("you are a valid user");
-	    		loadPage="Profilepage.jsp";
-	    		
-	    		
-				this.mv.setViewName(loadPage);
-				this.mv.addObject("user", this.username );
-				
-				
-	    				
-	    	}//if
-	    		
-	    		
-	    	else {
-	    		
-                loadPage="errorPage.jsp";
-				this.mv.setViewName(loadPage);
-				this.mv.addObject("result", this.username );
-	    		
-	    		//System.out.println("you are not a valid user");
-	    		
-	    	}
-	    		
-	    			
-	    		
-	    		//System.out.println(username+" "+ db_username +" "+ password+" "+ db_password);
-				
-	    		
-	            
-	    }//showTable method
-		
-		
-		
-		
-		
-	
-	
-	
+    	for(Object[] result: employees) {        
+    		db_username=(String) result[4];
+    		db_password=(String) result[6];
+    	    this.mv.addObject("role",(String) result[8]);
+    	}    	   
+    	if((username.equals(db_username))&&(password.equals(db_password))){    			
+    		System.out.println("you are a valid user");
+    		loadPage="Profilepage.jsp";    		
+			this.mv.setViewName(loadPage);
+			this.mv.addObject("user", this.username );    				
+    	}else {
+			this.mv.setViewName("thankyou.jsp");    		
+		    String main_message = "you are not a valid user.";
+		    String sub_message  = "You can Try signing up for the system.";
+		    this.mv.addObject("main_message", main_message);
+			this.mv.addObject("sub_message", sub_message);		    		
+    	}
+
+	}//validate_user method	
 }//class
+
+
+
+
+
+
+
+
+
+
