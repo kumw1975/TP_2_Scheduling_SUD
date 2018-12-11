@@ -37,7 +37,7 @@ public class EmployeeController {
     private String employee_id;
     private String password;
     
-    private DB_coonectionController db;
+    private DB_coonectionController db; 
     
     public EmployeeController() {
     	this.emp= new Employee();

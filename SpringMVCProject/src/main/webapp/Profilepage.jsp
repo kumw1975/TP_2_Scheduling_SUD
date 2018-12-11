@@ -245,16 +245,18 @@ background-color: #f2f2f2;
       <a class="navbar-brand" href="#">Scheduler</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="profile">Profile</a></li>
+      <li class="active"><a href="#">Profile</a></li>
       <li><a href="#">Page 1</a></li>
       <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="signUp"><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
-  </div>  
+  </div>
+  
+  
 </nav>
 
 
@@ -268,11 +270,12 @@ background-color: #f2f2f2;
 
    
         
-    	<div class="col-sm-5" style="padding-left:0;">
+    	<div class="col-sm-6" style="padding-left:0;">
           
           <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#home" data-toggle="tab" style="color:white; background-color: #4CAF50">My-Schedule</a></li>
             <li><a href="#schedule" data-toggle="tab" style="color:white; background-color: #4CAF50">General-Schedule</a></li>
+            <li><a href="#swap-requests" data-toggle="tab" style="color:white; background-color: #4CAF50">Swap-Swift-Requests</a></li>
             <li><a href="#settings" data-toggle="tab" style="color:white; background-color: #4CAF50">Settings</a></li>
           </ul>
               
@@ -301,9 +304,11 @@ background-color: #f2f2f2;
           		
           		String q = "SELECT * FROM Schedule WHERE EMPLOYEE_NAME"+"="+"'"+user_nm+"'";
           		String q2 = "SELECT * FROM Schedule";
+          		String q3="SELECT* FROM SwapShiftRequests";
           		
           		List<Object[]> employees = db.session.createSQLQuery(q).list();
           		List<Object[]> employees2 = db.session.createSQLQuery(q2).list();
+          		List<Object[]> employees3 = db.session.createSQLQuery(q3).list();
           	    %>
           	    	<% for(Object[] result: employees) {%>
           	    	 
@@ -380,6 +385,50 @@ background-color: #f2f2f2;
              </div><!--/tab-pane-schedule-->
              
              
+             
+             <div class="tab-pane" id="swap-requests">
+              <div class="table-responsive">
+                <table class="table table-hover table table-bordered table-bordered table table-curved">
+
+                  <thead>
+                    <tr>
+                      
+                      <th>Employee</th>
+                      <th>Date</th>
+                      <th>Start-Time</th>
+                      <th>End-Time</th>
+                      <th>location</th>
+                      
+                      
+                      
+                    </tr>
+                  </thead>
+          	    	<% for(Object[] result: employees3) {%>
+          	    	 
+          	        
+          	    		
+          	    		<tbody id="items">
+                        <tr>                          
+                          <td><%=(String) result[2]%></td>
+                          <td><%=(String) result[1]%></td>
+                          <td><%=(String) result[5]%></td>
+                          <td><%=(String) result[3]%></td>
+                          <td><%=(String) result[4]%></td>
+                        </tr>
+                        
+          	    		<tbody>
+          	    			
+          	    	<% } %>
+          	    	
+          	    	
+                  
+                </table>
+              </div><!--/table-resp-->
+             </div><!--/tab-pane-swaft-requests-->
+             
+             
+             
+             
              <div class="tab-pane" id="settings">
             		
                   
@@ -454,7 +503,7 @@ background-color: #f2f2f2;
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
-        <button onclick="confirmShiftswap()"> Reset</button>
+        
 </body>
     
     <script>
@@ -480,9 +529,10 @@ var start_time;
 var user= '<%=user_nm%>';
 $("#mySchedule tr").click(function(){
 	   $(this).addClass('selected').siblings().removeClass('selected');    
-	   date=$(this).find('td:first').html();
+	   date=$(this).find('td:nth-child(1)').html();
 	   start_time=$(this).find('td:nth-child(2)').html();
-	   
+	   end_time=$(this).find('td:nth-child(3)').html();
+	   location_2=$(this).find('td:nth-child(4)').html()
 	   confirmShiftswap();
 	});
 
@@ -505,7 +555,10 @@ $("#mySchedule tr").click(function(){
     	        data: {
     	            date: date,
     	            start_time: start_time,
+    	            end_time:end_time,
+    	            location_2:location_2,
     	            user:user
+    	            
     	        },
     	        type: 'POST'
     	        

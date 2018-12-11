@@ -57,32 +57,23 @@ public class SwapShiftController {
 		this.date= request.getParameter("date");
 		this.start_time= request.getParameter("start_time");
 		this.employee_name= request.getParameter("user");
-		
+		this.end_time=request.getParameter("end_time");
+		this.location=request.getParameter("location_2");
 		
 		this.sq.setDate(this.date);
 		this.sq.setEmployee_name(this.employee_name);
 		this.sq.setStart_time(this.start_time);
-		this.sq.setEnd_time("4:30 pm");
-		this.sq.setLocation("Shoreview");
+		this.sq.setEnd_time(this.end_time);
+		this.sq.setLocation(this.location);
 		
 		this.db= new DB_coonectionController(this.sq);
 		
 	    System.out.println(this.date);
 	    System.out.println(this.start_time);
+	    System.out.println(this.end_time);
 	    System.out.println(this.employee_name);
-		/*
-		String q = "SELECT * FROM Schedule";
-		List<Object[]> employee = this.db.session.createSQLQuery(q).list();
-		for(Object[] result: employee) {
-			
-			this.date;
-			this.start_time;
-			this.end_time;
-			this.location;
-			this.name;
-			
-		}
-		*/
+	    System.out.println(this.location);
+		
 	    
 	}
 	
@@ -93,4 +84,3 @@ public class SwapShiftController {
 	
 	
 }
-
