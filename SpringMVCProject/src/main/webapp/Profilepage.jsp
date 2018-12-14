@@ -305,7 +305,7 @@ background-color: #f2f2f2;
           		String q = "SELECT * FROM Schedule WHERE EMPLOYEE_NAME"+"="+"'"+user_nm+"'";
           		String q2 = "SELECT * FROM Schedule";
           		String q3="SELECT* FROM SwapShiftRequests";
-          		
+          		String eml="";
           		List<Object[]> employees = db.session.createSQLQuery(q).list();
           		List<Object[]> employees2 = db.session.createSQLQuery(q2).list();
           		List<Object[]> employees3 = db.session.createSQLQuery(q3).list();
@@ -324,7 +324,7 @@ background-color: #f2f2f2;
                         
           	    		<tbody>
           	    			
-          	    	<% } %>
+          	    	<% eml=(String) result[2];} %>
           	    	
           	    	
                   
@@ -368,12 +368,14 @@ background-color: #f2f2f2;
                           <td><%=(String) results[4]%></td>
                           <td><%=(String) results[5]%></td>
                           
-
+                          
                         </tr>
                         
           	    		<tbody>
-          	    			
-          	    	<% } %>
+          	    		
+          	    		
+          	    		
+          	    	<%} %>
                   
                   
                   
@@ -394,6 +396,7 @@ background-color: #f2f2f2;
                     <tr>
                       
                       <th>Employee</th>
+                      <th>Email</th>
                       <th>Date</th>
                       <th>Start-Time</th>
                       <th>End-Time</th>
@@ -409,11 +412,13 @@ background-color: #f2f2f2;
           	    		
           	    		<tbody id="items">
                         <tr>                          
-                          <td><%=(String) result[2]%></td>
+                          <td><%=(String) result[3]%> </td>
+                          <td><%=(String) result[2]%> </td>
                           <td><%=(String) result[1]%></td>
-                          <td><%=(String) result[5]%></td>
-                          <td><%=(String) result[3]%></td>
+                          <td><%=(String) result[6]%></td>
                           <td><%=(String) result[4]%></td>
+                          <td><%=(String) result[5]%></td>
+                          
                         </tr>
                         
           	    		<tbody>
@@ -527,6 +532,7 @@ $(document).ready(function(){
 var date;
 var start_time;
 var user= '<%=user_nm%>';
+var email= '<%=eml%>';
 $("#mySchedule tr").click(function(){
 	   $(this).addClass('selected').siblings().removeClass('selected');    
 	   date=$(this).find('td:nth-child(1)').html();
@@ -534,6 +540,7 @@ $("#mySchedule tr").click(function(){
 	   end_time=$(this).find('td:nth-child(3)').html();
 	   location_2=$(this).find('td:nth-child(4)').html()
 	   confirmShiftswap();
+	   
 	});
 
 	$('.ok').on('click', function(e){
@@ -557,14 +564,18 @@ $("#mySchedule tr").click(function(){
     	            start_time: start_time,
     	            end_time:end_time,
     	            location_2:location_2,
-    	            user:user
+    	            user:user,
+    	            email:email
     	            
     	        },
     	        type: 'POST'
     	        
+    	        
     	    });
             
         },
+        
+        
         cancel: function () {
             $.alert('Canceled!');
         }
@@ -572,6 +583,60 @@ $("#mySchedule tr").click(function(){
     }
 });
 }
+
+ 
+ 
+ // This function enebles you to take a shift
+ $("#swap-requests tr").click(function(){
+	   $(this).addClass('selected').siblings().removeClass('selected'); 
+	   employee_swap=$(this).find('td:nth-child(1)').html();
+	   email=$(this).find('td:nth-child(2)').html();
+	   date=$(this).find('td:nth-child(3)').html();
+	   start_time=$(this).find('td:nth-child(4)').html();
+	   swap();
+	});
+
+	$('.ok').on('click', function(e){
+	    alert($("#swap-requests tr.selected td:first").html());
+	});
+	
+ 
+//This fucntion enebles you to accept a shift.
+ function swap(){
+	 $.confirm({
+	    title: 'Take shift',
+	    content: 'Simple confirm!',
+	    draggable: true,
+	    buttons: {
+	        confirm: function () {
+	            $.alert('Confirmed!');
+	            $.ajax({
+	    	        url: '/SpringMVCProject1/swap',
+	    	        data: {
+	    	        	employee_swap:employee_swap,
+	    	        	email:email,
+	    	            date: date,
+	    	            start_time: start_time,
+	    	            user:user
+	    	            
+	    	            
+	    	        },
+	    	        type: 'POST'
+	    	        
+	    	    });
+	            
+	        },
+	        cancel: function () {
+	            $.alert('Canceled!');
+	        }
+	        
+	       
+	    }
+	});
+	}
+	
+	
+	
 </script>
                                                       
 </html>

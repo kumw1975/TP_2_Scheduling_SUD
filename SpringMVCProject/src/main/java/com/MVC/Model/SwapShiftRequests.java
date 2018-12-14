@@ -26,6 +26,9 @@ public class SwapShiftRequests {
 	@Column(name="EMPLOYEE_NAME")
 	private String employee_name;
 	
+	@Column(name="EMAIL")
+	private String email;
+	
 	@Column(name="LOCATION")
 	private String location;
 	
@@ -37,13 +40,13 @@ public class SwapShiftRequests {
 
 
 	
-	public SwapShiftRequests(int id, String start_time, String end_time, String employee_name, String location, String date) {
+	public SwapShiftRequests(String start_time, String end_time, String employee_name, String email, String location, String date) {
 		super();
-		this.id = id;
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.date=date;
 		this.employee_name = employee_name;
+		this.email=email;
 		this.location=location;
 		
 		
@@ -102,6 +105,18 @@ public class SwapShiftRequests {
 	public void setEmployee_name(String employee_name) {
 		this.employee_name = employee_name;
 	}
+	
+	
+	
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 
 
@@ -120,19 +135,9 @@ public class SwapShiftRequests {
 	@Override
 	public String toString() {
 		return "SwapShiftRequests [id=" + id + ", date=" + date + ", start_time=" + start_time + ", end_time="
-				+ end_time + ", employee_name=" + employee_name + ", location=" + location + "]";
+				+ end_time + ", employee_name=" + employee_name + ", email=" + email + ", location=" + location + "]";
 	}
 
-
-
-	
-
-
-	
-
-
-
-	
 
 
 
